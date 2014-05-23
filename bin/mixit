@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+require 'mixer'
+require 'optparse'
+
+
+options = {}
+optparse = OptionParser.new do|opts|
+    opts.banner = "Usage: mixit [-o outputfile -i inputfile -t templatefile]"
+    opts.on( '-i', '--input FILE', 'json Inputfile' ) do|p|
+        options[:inputfile] = p
+    end
+        
+    opts.on( '-o', '--output FILE', 'mixed outputfile' ) do|p|
+        options[:outputfile] = p
+    end
+
+    
+    opts.on( '-t', '--template directory', 'place where the templates are' ) do|p|
+        options[:templateDir] = p
+    end
+
+end.parse!
+
+
+mixer = MIX::Mixer.new
+
+input_string  = IO.read(options["inputfile"])
+outputfile    = File.new(options["outputfile"])
+inputdata     = JSON.pars(input_string)
+
+
+
+
+
+

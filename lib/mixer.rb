@@ -1,7 +1,3 @@
-require 'recursive-open-struct'
-
-
-
 module MIX
 
     class Mixer
@@ -11,31 +7,45 @@ module MIX
             @result = []
             @deeps  = 0
         end
+    #get all variables if the level, binds it and templates it
+    #this is important to maintain the order of buildingblock for the input
 
-        def mixItBaby(data)
-            ###putting an Index to the elements to find the sequence which has been in the json###
-            @deeps=@deeps + 1
-            ros = RecursiveOpenStruct.new(data,recurse_over_array: true)
-            puts ros.inspect
+
+        def premix(data)
             bind_hash={}
             data.each do |k,v|
                 if v.kind_of?(Hash) 
-                    mixItBaby(v)
                 elsif v.kind_of?(Array)
-                      ar = v
-                      ar.each do |element|
-                          mixItBaby(element)
-                      end
                 else
                     bind_hash[k] = v
                 end
             end
-            puts bind_hash.inspect
             et = ErbIT.new( bind_hash)
             template = getTemplate(bind_hash[:id])
             filled = et.render(template)
             puts filled.inspect
             @result.push(filled)
+        end
+
+
+        def mixItRuby(data)
+            ###putting an Index to the elements to find the sequence which has been in the json###
+            @deeps=@deeps + 1
+            premix(data)
+            bind_hash={}
+            data.each do |k,v|
+                if v.kind_of?(Hash) 
+                    mixItRuby(v)
+                elsif v.kind_of?(Array)
+                      ar = v
+                      ar.each do |element|
+                          mixItRuby(element)
+                      end
+                else
+        #done in premix
+                end
+            end
+            
             puts @deeps.inspect
             @deeps = @deeps -1
         end
@@ -43,7 +53,6 @@ module MIX
 
 
 
-        
 def getResult 
     @result
 end
