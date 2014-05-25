@@ -1,35 +1,40 @@
 #!/usr/bin/env ruby
-require 'mixer'
 require 'optparse'
-
-
+require "mixer"
+require "json"
 options = {}
 optparse = OptionParser.new do|opts|
     opts.banner = "Usage: mixit [-o outputfile -i inputfile -t templatefile]"
-    opts.on( '-i', '--input FILE', 'json Inputfile' ) do|p|
+    opts.on( '-i', '--input FILE', 'json inputfile' ) do|p|
         options[:inputfile] = p
     end
-        
+
     opts.on( '-o', '--output FILE', 'mixed outputfile' ) do|p|
         options[:outputfile] = p
     end
 
-    
-    opts.on( '-t', '--template directory', 'place where the templates are' ) do|p|
+    opts.on( '-t', '--templates DIR', 'place where the templates are' ) do|p|
         options[:templateDir] = p
     end
 
 end.parse!
 
-
 mixer = MIX::Mixer.new
+input_filename= options[:inputfile]
+if !input_filename
+    STDOUT.puts "no inputfile given"
+    exit(1)
+end
 
-input_string  = IO.read(options["inputfile"])
-outputfile    = File.new(options["outputfile"])
-inputdata     = JSON.pars(input_string)
-
-
-
+inputfile = options[:inputfile]
+path = File.dirname(inputfile)
+input_string  = IO.read(inputfile)
+outputfile    = options[:outputfile] || File.basename(inputfile,".*") + ".out" 
+outputfile    = File.join(path,outputfile)
+inputdata     = JSON.parse(input_string, {:symbolize_names => true})
+templateDir   = options[:templateDir]
+mixer.mixItRuby(inputdata, templateDir)
+mixer.writeResult2File(outputfile)
 
 
 

@@ -1,3 +1,7 @@
+
+#This file is for future use to extract the variables from a erb template
+
+
 class Template
   attr_accessor :file_path,:contents
 

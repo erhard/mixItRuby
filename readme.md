@@ -73,7 +73,10 @@ Then an array follow. An Array must be build of hashes, which can have subarrays
 What is mixItRuby needed for ?
 ==============================
 With that little gem you can build up personalized letters or emails or html pages.
-Just imagine the erb file are tex files or xmlfo or html files or they are files with are ruby file again, which produce some output.
+Just imagine the erb file are tex files or xml-fo or html files or they are files with are ruby file again, which produce some output.
+
+Another possibility is create other json files. Imagine the template erbs are templates for json. Then for example in SOA business objects can be  chained and enriched from services. 
+
 There are a lot of posibilities.
 
 
