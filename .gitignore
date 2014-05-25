@@ -42,3 +42,4 @@ test
 prod
 *.png
 site/dev/images/galleries
+*.gem

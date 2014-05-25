@@ -1,9 +1,9 @@
-MIX
+mixItRuby
 ===
 
-What is MIX ?
+What is mixItRuby ?
 -------------
-Mix is a gem for mixing data with tamplatefiles.
+Mix is a gem for mixing data with templatefiles.
 
 Example Use Case
 ----------------
@@ -13,17 +13,14 @@ What you do :
 Run mix with a erb template. Viola the output is (depending on the template)
     ready to be formatted in latex of whatever.
 
-    But whatever...... 
-
-
 
     Install
     -------
-    gem mix
+    gem install mixItRuby
 
 run (form commandline)
     -----------------------
-    mix inputfile template outputfile
+    mixit -i inputfile < -t templateDir -o outputfile  >
 
 
     run withing a programm
@@ -62,9 +59,9 @@ recursive      : substructures possible (nodes)
 
 A building block consists of an id and other key value pair.
 
-id: is a must. It represents the Identifier under which the template is accesible.
+id: is a must. It represents the identifier under which the template is accesible.
 At the moment it is a filename. The other attributes on the same level, which are no array or hash are 
-the key value pais which fill the erb.
+the key value pairs which fill the erb.
 The adress.erb looks like this
 <%=name%>, <%=prename%>
 Then an array follow. An Array must be build of hashes, which can have subarrays or like in the example building blocks again.
