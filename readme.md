@@ -14,40 +14,40 @@ Run mix with a erb template. Viola the output is (depending on the template)
     ready to be formatted in latex of whatever.
 
 
-    Install
-    -------
-    gem install mixItRuby
+Install
+-------
+gem install mixItRuby
 
 run (form commandline)
-    -----------------------
-    mixit -i inputfile < -t templateDir -o outputfile  >
+-----------------------
+mixit -i inputfile < -t templateDir -o outputfile  >
 
 
-    run withing a programm
-    ----------------------
+run withing a programm
+----------------------
 
 
-    current project status 
-    ----------------------
-    Work in progress just started
+current project status 
+----------------------
+Work in progress just started
 
 
-    You want to contributes ?
-    ==========================
-    Contact erhard@kargers.org
+You want to contributes ?
+==========================
+Contact erhard@kargers.org
 
 
 
 
-    Structure of the data
-    =====================
+Structure of the data
+=====================
 
-    json Format recursive, selfcontained.
+json Format recursive, selfcontained.
 
 recursive      : substructures possible (nodes)
-    selfcontained  : The name of the erb (id, for DB or File or whatever) is within the data
+selfcontained  : The name of the erb (id, for DB or File or whatever) is within the data
 
-    Here an example:
+Here an example:
 
 {"id":"adress.erb","name":"Bond","prename":"James",
     "items":
