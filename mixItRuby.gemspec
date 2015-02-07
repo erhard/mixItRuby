@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
     s.name               = 'mixItRuby'
-    s.version            = '0.0.0'
-    s.date               = '2014-05-25'
+    s.version            = '0.0.1'
+    s.date               = '2015-01-08'
     s.summary            = "MixItRuby! mixes json in erb + CLI"
     s.description        = "A gem for mixing a nested json structure in erb files"
     s.authors            = ["Erhard Karger"]

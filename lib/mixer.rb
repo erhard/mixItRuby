@@ -21,7 +21,7 @@ module MIX
                 end
             end
             et = ErbIT.new( bind_hash)
-            template = getTemplate(bind_hash[:id])
+            template = getTemplate(bind_hash[:id],templatePath)
             filled = et.render(template)
             @result.push(filled)
         end
